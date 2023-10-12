@@ -29,6 +29,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         DataMananger.loadInitialDataIfNeeded(context: context)
+        DataMananger.loadDataForSelectedCar(context: context, into: self)
     }
 
     //MARK: - @IBActions

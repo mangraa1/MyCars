@@ -6,8 +6,8 @@
 //  Copyright © 2023 Heorhii. All rights reserved.
 //
 
-import Foundation
 import CoreData
+import UIKit
 
 
 extension Car {
@@ -21,6 +21,16 @@ extension Car {
         car?.myChoice = dictionary["myChoice"] as? Bool ?? false
         car?.rating = dictionary["rating"] as? Float ?? 0.0
         car?.timesDriven = dictionary["timesDriven"] as? Int16 ?? 0
+        car?.lastStarted = dictionary["lastStarted"] as? Date
+
+        let imageName = dictionary["imageName"] as? String
+        let carImage = UIImage(named: imageName!)
+        let imageData = carImage?.pngData()
+        car?.imageData = imageData
+
+        if let colorDictionary = dictionary["tintColor"] as? [String: Float] {
+            car?.tintColor = getColor(colorDictionary: colorDictionary)
+        }
 
         return car
     }
@@ -33,5 +43,13 @@ extension Car {
                 print("Error: \(error.localizedDescription)")
             }
         }
+    }
+
+    private static func getColor(colorDictionary: [String: Float]) -> UIColor {
+        guard let red = colorDictionary["red"],
+              let green = colorDictionary["green"],
+              let blue = colorDictionary["blue"] else { return UIColor() }
+
+        return UIColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1.0)
     }
 }

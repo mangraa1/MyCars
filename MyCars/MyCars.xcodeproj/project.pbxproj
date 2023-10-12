@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0407D1DA2AD70401005FB36E /* DataMananger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407D1D92AD70401005FB36E /* DataMananger.swift */; };
 		0407D1DC2AD70565005FB36E /* CarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407D1DB2AD70565005FB36E /* CarExtension.swift */; };
+		04C2A2052AD85F000083D238 /* ImageTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2A2042AD85F000083D238 /* ImageTransformer.swift */; };
+		04C2A2072AD8684B0083D238 /* DateFormatterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2A2062AD8684B0083D238 /* DateFormatterHelper.swift */; };
+		04C2A20C2AD870740083D238 /* DataMananger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2A20B2AD870740083D238 /* DataMananger.swift */; };
+		04C2A20E2AD870960083D238 /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2A20D2AD870960083D238 /* CoreDataHandler.swift */; };
 		352762DA1C0AEC0000A3BABA /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 359705B91C0829ED00D13FE9 /* data.plist */; };
 		352762DB1C0AEEEA00A3BABA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 359705AA1C08159E00D13FE9 /* Assets.xcassets */; };
 		352762DE1C0AEF1500A3BABA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 359705AC1C08159E00D13FE9 /* LaunchScreen.storyboard */; };
@@ -20,8 +23,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0407D1D92AD70401005FB36E /* DataMananger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMananger.swift; sourceTree = "<group>"; };
 		0407D1DB2AD70565005FB36E /* CarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarExtension.swift; sourceTree = "<group>"; };
+		04C2A2042AD85F000083D238 /* ImageTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTransformer.swift; sourceTree = "<group>"; };
+		04C2A2062AD8684B0083D238 /* DateFormatterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterHelper.swift; sourceTree = "<group>"; };
+		04C2A20B2AD870740083D238 /* DataMananger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMananger.swift; sourceTree = "<group>"; };
+		04C2A20D2AD870960083D238 /* CoreDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
 		3585ECB623AB388700F49C82 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		359705A01C08159E00D13FE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		359705A21C08159E00D13FE9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -64,7 +70,10 @@
 		0407D1DF2AD709CC005FB36E /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				0407D1D92AD70401005FB36E /* DataMananger.swift */,
+				04C2A20B2AD870740083D238 /* DataMananger.swift */,
+				04C2A20D2AD870960083D238 /* CoreDataHandler.swift */,
+				04C2A2042AD85F000083D238 /* ImageTransformer.swift */,
+				04C2A2062AD8684B0083D238 /* DateFormatterHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -192,11 +201,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04C2A20C2AD870740083D238 /* DataMananger.swift in Sources */,
+				04C2A20E2AD870960083D238 /* CoreDataHandler.swift in Sources */,
 				352762E11C0AEF3600A3BABA /* ViewController.swift in Sources */,
 				352762E01C0AEF3400A3BABA /* AppDelegate.swift in Sources */,
+				04C2A2052AD85F000083D238 /* ImageTransformer.swift in Sources */,
 				0407D1DC2AD70565005FB36E /* CarExtension.swift in Sources */,
-				0407D1DA2AD70401005FB36E /* DataMananger.swift in Sources */,
 				35F6275A23EE6FB000090812 /* MyCars.xcdatamodeld in Sources */,
+				04C2A2072AD8684B0083D238 /* DateFormatterHelper.swift in Sources */,
 				3585ECB723AB388700F49C82 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

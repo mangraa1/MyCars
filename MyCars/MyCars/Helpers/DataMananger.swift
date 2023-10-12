@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
- enum UserDefaultsKeys {
+fileprivate enum UserDefaultsKeys {
     static let dataLoaded = "dataLoaded"
 }
 
@@ -27,6 +27,20 @@ class DataMananger {
                 }
             }
             UserDefaults.standard.set(true, forKey: UserDefaultsKeys.dataLoaded)
+        }
+    }
+
+    static func loadDataForSelectedCar(context: NSManagedObjectContext, into viewController: ViewController) {
+        let fetchRequest = Car.fetchRequest()
+        let mark = viewController.segmentedControl.titleForSegment(at: 0)
+        fetchRequest.predicate = NSPredicate(format: "mark == %@", mark!)
+
+        do {
+            let results = try context.fetch(fetchRequest)
+            let car = results.first!
+            CoreDataHandler.insertDataFor(car: car, into: viewController)
+        } catch let error {
+            print(error.localizedDescription)
         }
     }
 }
