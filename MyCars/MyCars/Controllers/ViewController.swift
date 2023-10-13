@@ -15,6 +15,8 @@ class ViewController: UIViewController {
 
     public var context: NSManagedObjectContext!
 
+    private var selectedCar: Car!
+
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var markLabel: UILabel!
     @IBOutlet weak var modelLabel: UILabel!
@@ -29,15 +31,21 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         DataMananger.loadInitialDataIfNeeded(context: context)
-        DataMananger.loadDataForSelectedCar(context: context, into: self)
+        DataMananger.loadDataForSelectedCar(context: context, into: self) { car in
+            selectedCar = car
+        }
     }
 
     //MARK: - @IBActions
 
     @IBAction func segmentedCtrlPressed(_ sender: UISegmentedControl) {}
     
-    @IBAction func startEnginePressed(_ sender: UIButton) {}
+    @IBAction func startEnginePressed(_ sender: UIButton) {
+        DataMananger.updateTimesDriven(selectedCar, into: self)
+    }
     
-    @IBAction func rateItPressed(_ sender: UIButton) {}
+    @IBAction func rateItPressed(_ sender: UIButton) {
+        DataMananger.updateRatingForSelectedCar(selectedCar, into: self)
+    }
 }
 

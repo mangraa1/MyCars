@@ -15,6 +15,31 @@ fileprivate enum UserDefaultsKeys {
 }
 
 class DataMananger {
+
+    static var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "MyCars")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+
+    // MARK: - CRUD
+
+    static func saveContext () {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
+
     static func loadInitialDataIfNeeded(context: NSManagedObjectContext) {
         if !UserDefaults.standard.bool(forKey: UserDefaultsKeys.dataLoaded) {
             guard let pathToFile = Bundle.main.path(forResource: "data", ofType: "plist"),
@@ -30,7 +55,7 @@ class DataMananger {
         }
     }
 
-    static func loadDataForSelectedCar(context: NSManagedObjectContext, into viewController: ViewController) {
+    static func loadDataForSelectedCar(context: NSManagedObjectContext, into viewController: ViewController, completion: (_ car: Car) -> ()) {
         let fetchRequest = Car.fetchRequest()
         let mark = viewController.segmentedControl.titleForSegment(at: 0)
         fetchRequest.predicate = NSPredicate(format: "mark == %@", mark!)
@@ -39,8 +64,31 @@ class DataMananger {
             let results = try context.fetch(fetchRequest)
             let car = results.first!
             CoreDataHandler.insertDataFor(car: car, into: viewController)
+            completion(car)
         } catch let error {
             print(error.localizedDescription)
+        }
+    }
+
+    static func updateTimesDriven(_ car: Car, into viewController: ViewController) {
+        car.timesDriven += 1
+        car.lastStarted = Date()
+
+        DataMananger.saveContext()
+        CoreDataHandler.insertDataFor(car: car, into: viewController)
+    }
+
+    static func updateRatingForSelectedCar(_ car: Car, into viewController: ViewController) {
+        viewController.updateRateAlertController(withTitle: "Rate", message: "Rate this car", style: .alert) { rate in
+            car.rating = rate
+
+            do {
+                try self.persistentContainer.viewContext.save()
+                CoreDataHandler.insertDataFor(car: car, into: viewController)
+            } catch let error {
+                viewController.warningAlert(withTitle: "Wrong value", message: "Wrong input", style: .alert)
+                print("Error: \(error.localizedDescription)")
+            }
         }
     }
 }

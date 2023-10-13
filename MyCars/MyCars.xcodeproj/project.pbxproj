@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0407D1DC2AD70565005FB36E /* CarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407D1DB2AD70565005FB36E /* CarExtension.swift */; };
+		040FF9C02AD9A74D000EED36 /* ViewController+alertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FF9BF2AD9A74D000EED36 /* ViewController+alertController.swift */; };
 		04C2A2052AD85F000083D238 /* ImageTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2A2042AD85F000083D238 /* ImageTransformer.swift */; };
 		04C2A2072AD8684B0083D238 /* DateFormatterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2A2062AD8684B0083D238 /* DateFormatterHelper.swift */; };
 		04C2A20C2AD870740083D238 /* DataMananger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2A20B2AD870740083D238 /* DataMananger.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		0407D1DB2AD70565005FB36E /* CarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarExtension.swift; sourceTree = "<group>"; };
+		040FF9BF2AD9A74D000EED36 /* ViewController+alertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+alertController.swift"; sourceTree = "<group>"; };
 		04C2A2042AD85F000083D238 /* ImageTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTransformer.swift; sourceTree = "<group>"; };
 		04C2A2062AD8684B0083D238 /* DateFormatterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterHelper.swift; sourceTree = "<group>"; };
 		04C2A20B2AD870740083D238 /* DataMananger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMananger.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				0407D1DB2AD70565005FB36E /* CarExtension.swift */,
+				040FF9BF2AD9A74D000EED36 /* ViewController+alertController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				04C2A2052AD85F000083D238 /* ImageTransformer.swift in Sources */,
 				0407D1DC2AD70565005FB36E /* CarExtension.swift in Sources */,
 				35F6275A23EE6FB000090812 /* MyCars.xcdatamodeld in Sources */,
+				040FF9C02AD9A74D000EED36 /* ViewController+alertController.swift in Sources */,
 				04C2A2072AD8684B0083D238 /* DateFormatterHelper.swift in Sources */,
 				3585ECB723AB388700F49C82 /* SceneDelegate.swift in Sources */,
 			);
