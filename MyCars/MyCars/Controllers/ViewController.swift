@@ -17,7 +17,15 @@ class ViewController: UIViewController {
 
     private var selectedCar: Car!
 
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var segmentedControl: UISegmentedControl! {
+        didSet {
+            DataMananger.loadDataForSelectedCar(context: context, into: self) { car in
+                selectedCar = car
+            }
+            segmentedControl.selectedSegmentTintColor = .white
+            segmentedControl.setupAttributes()
+        }
+    }
     @IBOutlet weak var markLabel: UILabel!
     @IBOutlet weak var modelLabel: UILabel!
     @IBOutlet weak var carImageView: UIImageView!
@@ -31,14 +39,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         DataMananger.loadInitialDataIfNeeded(context: context)
-        DataMananger.loadDataForSelectedCar(context: context, into: self) { car in
-            selectedCar = car
-        }
     }
 
     //MARK: - @IBActions
 
-    @IBAction func segmentedCtrlPressed(_ sender: UISegmentedControl) {}
+    @IBAction func segmentedCtrlPressed(_ sender: UISegmentedControl) {
+        DataMananger.loadDataForSelectedCar(context: context, into: self) { car in
+            selectedCar = car
+        }
+    }
     
     @IBAction func startEnginePressed(_ sender: UIButton) {
         DataMananger.updateTimesDriven(selectedCar, into: self)
@@ -48,4 +57,3 @@ class ViewController: UIViewController {
         DataMananger.updateRatingForSelectedCar(selectedCar, into: self)
     }
 }
-

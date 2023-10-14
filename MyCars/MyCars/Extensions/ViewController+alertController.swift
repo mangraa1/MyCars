@@ -29,7 +29,7 @@ extension ViewController {
         present(ac, animated: true)
     }
 
-    func warningAlert(withTitle title: String?, message: String?, style: UIAlertController.Style) {
+    func warningAlertController(withTitle title: String?, message: String?, style: UIAlertController.Style) {
         let ac = UIAlertController(title: title, message: message, preferredStyle: style)
         let okAction = UIAlertAction(title: "Ok", style: .default)
 

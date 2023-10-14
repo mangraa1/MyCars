@@ -16,7 +16,7 @@ class CoreDataHandler {
         viewController.markLabel.text = car.mark
         viewController.modelLabel.text = car.model
         viewController.myChoiceImageView.isHidden = !car.myChoice
-        viewController.segmentedControl.tintColor = car.tintColor as? UIColor
+        viewController.segmentedControl.backgroundColor = car.tintColor as? UIColor
 
         if let lastStarted = car.lastStarted {
             viewController.lastTimeStartedLabel.text = "Last time started: \(DateFormatterHelper.shared.string(from: lastStarted))"

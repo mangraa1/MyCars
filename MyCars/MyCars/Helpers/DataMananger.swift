@@ -56,15 +56,16 @@ class DataMananger {
     }
 
     static func loadDataForSelectedCar(context: NSManagedObjectContext, into viewController: ViewController, completion: (_ car: Car) -> ()) {
+        
         let fetchRequest = Car.fetchRequest()
-        let mark = viewController.segmentedControl.titleForSegment(at: 0)
+        let mark = viewController.segmentedControl.titleForSegment(at: viewController.segmentedControl.selectedSegmentIndex)
         fetchRequest.predicate = NSPredicate(format: "mark == %@", mark!)
 
         do {
             let results = try context.fetch(fetchRequest)
-            let car = results.first!
-            CoreDataHandler.insertDataFor(car: car, into: viewController)
-            completion(car)
+            let car = results.first
+            CoreDataHandler.insertDataFor(car: car!, into: viewController)
+            completion(car!)
         } catch let error {
             print(error.localizedDescription)
         }
@@ -86,7 +87,7 @@ class DataMananger {
                 try self.persistentContainer.viewContext.save()
                 CoreDataHandler.insertDataFor(car: car, into: viewController)
             } catch let error {
-                viewController.warningAlert(withTitle: "Wrong value", message: "Wrong input", style: .alert)
+                viewController.warningAlertController(withTitle: "Wrong value", message: "Wrong input", style: .alert)
                 print("Error: \(error.localizedDescription)")
             }
         }
